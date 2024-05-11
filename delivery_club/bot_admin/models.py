@@ -12,7 +12,7 @@ from delivery_club.settings import DAY_FORM
 class UserTable(models.Model):
     id = models.AutoField(primary_key=True)
     user_id = models.BigIntegerField(unique=True)
-    full_name = models.CharField(max_length=255, null=True, blank=True)
+    full_name = models.CharField(max_length=255)
     username = models.CharField(max_length=255, null=True, blank=True)
     role = models.CharField(max_length=255, null=True, blank=True, choices=mp.user_status)
     name = models.CharField(max_length=255, null=True, blank=True)

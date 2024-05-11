@@ -13,9 +13,7 @@ bot = telebot.TeleBot(BOT_TOKEN, parse_mode='html')
 
 # информирует куру о назначенном заказе
 def send_order_dlv(name: str, order_info: OrderTable):
-    print(f'name {name}')
     user = UserTable.objects.filter (name=name).first()
-    print(user)
     work_order = WorkOrders.objects.filter(order_id=order_info.id)
     if work_order:
         work_order.user_id = user.user_id
