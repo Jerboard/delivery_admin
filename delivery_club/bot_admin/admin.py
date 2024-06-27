@@ -24,11 +24,9 @@ class ViewOrderTable(admin.ModelAdmin):
         return form
 
 
-
 @admin.register(md.ReportTable)
 class ViewReportTable(admin.ModelAdmin):
-    # list_display = ['n', 'm', 'o', 'report_text']
-    list_display = ['n', 'm', 'o', 'l']
+    list_display = ['n', 'm', 'l']
     search_fields = ['n']
     list_filter = ['m', 'n']
     ordered = ['-row_num']
