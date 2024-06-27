@@ -6,7 +6,7 @@ from bot_admin import models as md
 
 @admin.register(md.OrderTable)
 class ViewOrderTable(admin.ModelAdmin):
-    list_display = ['row_num', 'n', 'o',  'm', 'x', 'f','g']
+    list_display = ['row_num', 'n', 'o',  'm', 'x', 'f', 'g', 'test']
     search_fields = ['n', 'o', 'row_num']
     list_filter = ('g', 'f',)
     ordering = ['-row_num']
@@ -24,13 +24,23 @@ class ViewOrderTable(admin.ModelAdmin):
         return form
 
 
+
 @admin.register(md.ReportTable)
 class ViewReportTable(admin.ModelAdmin):
+    # list_display = ['n', 'm', 'o', 'report_text']
     list_display = ['n', 'm', 'o', 'l']
     search_fields = ['n']
     list_filter = ['m', 'n']
     ordered = ['-row_num']
     # ordering_fields = []
+
+    def report_text(self, obj):
+        text = ''
+        for row in obj.l:
+            text += row
+        return text
+
+    report_text.short_description = 'Отчёт техт'
 
 
 @admin.register(md.UserTable)

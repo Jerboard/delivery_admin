@@ -12,6 +12,7 @@ class TypeOrderUpdate(str, Enum):
     UP_DATE = 'up_date'
     TRANS = 'trans'
 
+
 class OrderStatus(str, Enum):
     NEW = 'new'
     SUC = 'success'

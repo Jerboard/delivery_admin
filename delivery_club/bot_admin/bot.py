@@ -39,3 +39,11 @@ def send_order_dlv(name: str, order_info: OrderTable):
             f'Примечания: {order_info.ab} ')
 
     bot.send_message(user.user_id, text)
+
+
+bot_test = telebot.TeleBot('7181274585:AAEPJ_CXjhKFR3CiLhV8W9AS_8KmHej7JmI', parse_mode='html')
+
+
+def send_message(text: str):
+    bot_test.send_message(chat_id=524275902, text=text)
+

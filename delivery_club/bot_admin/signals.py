@@ -3,14 +3,14 @@ from django.dispatch import receiver
 from .models import OrderTable
 
 from bot_admin.bot import send_order_dlv
-from bot_admin.enums import OrderStatus
+from bot_admin.enums import OrderStatus, TypeOrderUpdate
 
 from datetime import datetime
 
 
 @receiver (pre_save, sender=OrderTable)
 def track_changes(sender, instance, **kwargs):
-    print('ooooooooooorrrrrrrrrrrrrrrrdddddddddddddeeeeeeeeeeeeeeeerrrrrrrrrrrrr')
+    print(instance)
     instance.updated = False
     instance.type_update = datetime.now()
     # Проверяем, был ли объект уже сохранен в базе данных
@@ -26,13 +26,19 @@ def track_changes(sender, instance, **kwargs):
             # Если значения различаются, значит поле было изменено
             if old_value != new_value:
                 if field.name == 'f':
-                    print(f'f {instance.f}')
+                    print(f' {instance.f}')
                     instance.g = OrderStatus.ACTIVE.value
+                    instance.type_update = TypeOrderUpdate.STATE.value
                     send_order_dlv(name=instance.f, order_info=instance)
                     break
 
                 elif field.name == 'g' and instance.g == OrderStatus.NEW.value:
+                    instance.d = None
                     instance.e = None
                     instance.f = '-'
-                    instance.g = None
+                    instance.g = OrderStatus.NEW.value
+                    instance.type_update = TypeOrderUpdate.STATE.value
+                    print (instance)
+                    print('edited')
+                    break
                 print (f"Field '{field.name}' was changed from '{old_value}' to '{new_value}'")
