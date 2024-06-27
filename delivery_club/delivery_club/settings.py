@@ -6,6 +6,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('DJANGO_KEY')
+print(SECRET_KEY)
 
 DEBUG = bool(int(config('DEBUG')))
 

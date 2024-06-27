@@ -6,7 +6,7 @@ from bot_admin import models as md
 
 @admin.register(md.OrderTable)
 class ViewOrderTable(admin.ModelAdmin):
-    list_display = ['row_num', 'n', 'o',  'm', 'x', 'f', 'g', 'test']
+    list_display = ['row_num', 'n', 'o', 'm', 'x', 'f', 'g']
     search_fields = ['n', 'o', 'row_num']
     list_filter = ('g', 'f',)
     ordering = ['-row_num']
