@@ -21,15 +21,22 @@ user_status = (
     ('own', 'Владелец'),
 )
 
-company = (
+company_dlv = (
     ('post', 'Почта / СДЭК'),
     ('master', 'Мастер'),
     ('putilin', 'Путилин'),
     ('master_spb', 'Мастер СПБ')
 )
 
+company_opr = (
+    ('vlada', 'Влада'),
+    ('vera', 'Вера'),
+    ('boss', 'Руководитель')
+)
+
+company_all = company_dlv + company_opr
+
 dlvs = (
-    ("Please", "Please"),
     ("Женька тестер", "Женька тестер"),
     ("Димка тестер", "Димка тестер"),
     ("Рустам", "Рустам"),

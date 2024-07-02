@@ -16,7 +16,7 @@ class UserTable(models.Model):
     username = models.CharField(max_length=255, null=True, blank=True)
     role = models.CharField(max_length=255, null=True, blank=True, choices=mp.user_status)
     name = models.CharField(max_length=255, null=True, blank=True)
-    company = models.CharField(max_length=255, null=True, blank=True, choices=mp.company)
+    company = models.CharField(max_length=255, null=True, blank=True, choices=mp.company_all)
     phone = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
@@ -60,15 +60,10 @@ class OrderTable(models.Model):
     aa = models.CharField('AA Итого с клиента', max_length=255, null=True, blank=True)
     ab = models.CharField('AB Примечания', max_length=255, null=True, blank=True)
     ac = models.CharField('AC Курьерская', max_length=255, null=True, blank=True)
-    # ad = models.CharField('AD Партнёр оплата', max_length=255, null=True, blank=True)
-    # ae = models.CharField('AE Оператор оплата (без доставки и мотивации)', max_length=255, null=True, blank=True)
-    # af = models.CharField('AF За вычетом партнерской доли', max_length=255, null=True, blank=True)
-    # ag = models.CharField('AG Вычисления +5% по Гриша', max_length=255, null=True, blank=True)
-    # ah = models.CharField('AH Партнер ДА / НЕТ', max_length=255, null=True, blank=True)
     updated = models.BooleanField('Обновлено', default=False)
     time_update = models.DateTimeField('', auto_now_add=True)
     type_update = models.CharField('Тип обновления', max_length=255, default=enums.TypeOrderUpdate.ADD.value)
-    # discount = models.IntegerField('Скидка', default=0)
+    comp_opr = models.CharField('Компания оператора', max_length=255, null=True, blank=True, choices=mp.company_opr)
     row_num = models.IntegerField('Строка')
 
     def __str__(self):
